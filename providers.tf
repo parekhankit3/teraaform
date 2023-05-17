@@ -57,10 +57,10 @@ resource "aws_route_table" "terraformRT" {
   }
 }
 
-# create subnet endpoint associate
-resource "aws_vpc_endpoint_subnet_association" "myec2" {
-  vpc_endpoint_id = aws_vpc_endpoint.terraformvpc.id
-  subnet_id       = aws_subnet.terraformsubnet.id
+# create subnet associate
+resource "aws_route_table_association" "subassociate" {
+  subnet_id      = aws_subnet.terraformsubnet.id
+  route_table_id = aws_route_table.terraformRT.id
 }
 
 # create security group
