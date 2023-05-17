@@ -44,6 +44,25 @@ resource "aws_internet_gateway" "igwterraform" {
   }
 }
 
+# Create Route table
+resource "aws_route_table" "terraformRT" {
+  vpc_id = aws_vpc.terraformvpc.id
+
+  route {
+    cidr_block = "10.0.0.0/16"
+    gateway_id = aws_internet_gateway.igwterraform.id
+  }
+
+  route {
+    ipv6_cidr_block        = "::/0"
+    egress_only_gateway_id = aws_egress_only_internet_gateway.igwterraform.id
+  }
+
+  tags = {
+    Name = "terraformRT"
+  }
+}
+
 # create security group
 resource "aws_security_group" "terraformSecGroup" {
   name        = "terraformSecGroup"
