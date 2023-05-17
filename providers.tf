@@ -35,7 +35,16 @@ resource "aws_subnet" "terraformsubnet" {
   }
 }
 
-#create security group
+# create internet gateway
+resource "aws_internet_gateway" "igwterraform" {
+  vpc_id = aws_vpc.terraformvpc.id
+
+  tags = {
+    Name = "igwterraform"
+  }
+}
+
+# create security group
 resource "aws_security_group" "terraformSecGroup" {
   name        = "terraformSecGroup"
   description = "Allow TLS inbound traffic"
