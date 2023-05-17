@@ -28,7 +28,7 @@ resource "aws_vpc" "terraformvpc" {
 # create a subnet
 resource "aws_subnet" "terraformsubnet" {
   vpc_id     = aws_vpc.terraformvpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = "10.0.0.0/16"
 
   tags = {
     Name = "terraformsubnet"
@@ -46,8 +46,7 @@ resource "aws_security_group" "terraformSecGroup" {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.terraformvpc.cidr_block]
-    ipv6_cidr_blocks = [aws_vpc.terraformvpc.ipv6_cidr_block]
+    cidr_blocks      = [aws_vpc.terraformsubnet.cidr_block]
   }
 
   egress {
@@ -55,7 +54,6 @@ resource "aws_security_group" "terraformSecGroup" {
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
 
   tags = {
