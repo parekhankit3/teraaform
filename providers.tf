@@ -36,8 +36,8 @@ resource "aws_subnet" "terraformsubnet" {
 }
 
 #create security group
-resource "aws_security_group" "terraforSecGroup" {
-  name        = "terraforSecGroup"
+resource "aws_security_group" "terraformSecGroup" {
+  name        = "terraformSecGroup"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.terraformvpc.id
 
@@ -59,6 +59,6 @@ resource "aws_security_group" "terraforSecGroup" {
   }
 
   tags = {
-    Name = "terraforSecGroup"
+    Name = "terraformSecGroup"
   }
 }
