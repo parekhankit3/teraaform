@@ -46,7 +46,7 @@ resource "aws_security_group" "terraformSecGroup" {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.terraformsubnet.cidr_block]
+    cidr_blocks      = [aws_vpc.terraformvpc.cidr_block]
   }
 
   egress {
