@@ -15,6 +15,19 @@ provider "aws" {
   secret_key = "IqmpNV4RAQPMV50bdn9EYOoV26CIsjP9ZCo18goX"
 }
 
+# create Ec2 Instance 
+resource "aws_instance" "myec2" {
+  ami           = "ami-0889a44b331db0194"
+  instance_type = "t2.micro"
+  subnet_id     = "terraformsubnet"
+  vpc_id = "terraformvpc"
+ 
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
 # Create a VPC
 resource "aws_vpc" "terraformvpc" {
   cidr_block       = "10.0.0.0/16"
