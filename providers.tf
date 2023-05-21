@@ -19,9 +19,7 @@ provider "aws" {
 resource "aws_instance" "myec2" {
   ami           = "ami-0889a44b331db0194"
   instance_type = "t2.micro"
-  subnet_id     = "subnet-04b9d4a0cbbe3ed25"
-  
- 
+  subnet_id     = "subnet-04b9d4a0cbbe3ed25" 
 
   tags = {
     Name = "Terra_instance"
