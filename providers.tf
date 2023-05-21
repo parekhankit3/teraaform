@@ -11,8 +11,8 @@ terraform {
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIARMGMXWTSWQCIMLXX"
-  secret_key = "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"
+  access_key = "AKIARMGMXWTS55YMEAX4"
+  secret_key = "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"
 }
 
 # create Ec2 Instance 
